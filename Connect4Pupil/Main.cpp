@@ -1,7 +1,17 @@
-﻿# include <Siv3D.hpp> // Siv3D v0.6.12
+﻿#include <Siv3D.hpp> // Siv3D v0.6.12
+#include "C4Game.h"
 
 void Main()
 {
+#if 01
+	Scene::SetBackground(ColorF{ 68.0/255.0, 36.0/255.0, 52.0/255.0 });
+
+	C4Game::play_game();
+
+	while (System::Update()) {
+
+	}
+#else
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 
@@ -92,6 +102,7 @@ void Main()
 		// プレイヤーを描く | Draw the player
 		emoji.scaled(0.75).mirrored(isPlayerFacingRight).drawAt(playerPosX, 540);
 	}
+#endif
 }
 
 //
