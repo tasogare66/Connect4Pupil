@@ -10,6 +10,7 @@ enum class WinningStatus {
 namespace param {
 	inline constexpr int H = 6; //ボードの高さ
 	inline constexpr int W = 7; //ボードの幅
+	inline constexpr int64_t INF = 1000000000LL;
 }
 
 struct Vec2i {
@@ -36,6 +37,7 @@ public:
 	WinningStatus get_winning_stat() const { return m_winning_stat; }
 	std::vector<int> legal_actions() const;
 	void advance(int in_action); //1ターン進め,次のプレイヤー視点の盤面にする
+	double get_first_player_score_for_win_rate() const;
 	std::string to_string() const;
 
 private:

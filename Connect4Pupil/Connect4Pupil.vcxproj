@@ -115,6 +115,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="C4AI.cpp" />
     <ClCompile Include="C4Game.cpp" />
     <ClCompile Include="C4State.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -318,10 +319,12 @@
     <Xml Include="App\example\xml\test.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C4AI.h" />
     <ClInclude Include="C4Game.h" />
     <ClInclude Include="C4State.h" />
     <ClInclude Include="Rng.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TimeKeeper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\example\obj\blacksmith.obj">

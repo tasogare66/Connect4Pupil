@@ -92,6 +92,20 @@ void C4State::advance(int in_action)
 	}
 }
 
+double C4State::get_first_player_score_for_win_rate() const
+{
+	switch (this->get_winning_stat()) {
+	case WinningStatus::WIN:
+		if (m_is_first) return 1.;
+		else return 0.;
+	case WinningStatus::LOSE:
+		if (m_is_first) return 0.;
+		else return 1.;
+	default:
+		return 0.5;
+	}
+}
+
 std::string C4State::to_string() const
 {
 	std::stringstream ss("");
