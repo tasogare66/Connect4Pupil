@@ -1,21 +1,27 @@
 ﻿#include <Siv3D.hpp> // Siv3D v0.6.12
 #include "C4Game.h"
 #include "C4AI.h"
+#include "ModeGame.h"
 
 void Main()
 {
 #if 01
+	Window::Resize(param::SCRW, param::SCRH);
+	Scene::SetResizeMode(ResizeMode::Keep);
 	Scene::SetBackground(ColorF{ 68.0 / 255.0, 36.0 / 255.0, 52.0 / 255.0 });
 
 	//C4Game::play_game();
-	auto ais = std::array<StringAIPair, 2>{
-		StringAIPair("mctsActionWithTimeThreshold 1ms", [](const C4State& state) { return ai::montecarlo::mcts_action(state, 1); }),
-		StringAIPair("randomAction", [](const C4State& state) { return C4Game::random_action(state); }),
-	};
-	C4Game::test_first_plyaer_win_rate(ais, 100);
+	//auto ais = std::array<StringAIPair, 2>{
+	//	StringAIPair("mctsActionWithTimeThreshold 1ms", [](const C4State& state) { return ai::montecarlo::mcts_action(state, 1); }),
+	//	StringAIPair("randomAction", [](const C4State& state) { return C4Game::random_action(state); }),
+	//};
+	//C4Game::test_first_plyaer_win_rate(ais, 100);
+
+	ModeGame mode_game;
 
 	while (System::Update()) {
-
+		mode_game.update();
+		mode_game.draw();
 	}
 #else
 	// 背景の色を設定する | Set the background color

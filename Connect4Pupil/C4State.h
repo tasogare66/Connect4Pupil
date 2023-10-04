@@ -11,6 +11,9 @@ namespace param {
 	inline constexpr int H = 6; //ボードの高さ
 	inline constexpr int W = 7; //ボードの幅
 	inline constexpr int64_t INF = 1000000000LL;
+	inline constexpr int PLAYER_NUM = 2;
+	inline constexpr int32_t SCRW = 1280;
+	inline constexpr int32_t SCRH = 720;
 }
 
 struct Vec2i {
@@ -34,11 +37,14 @@ public:
 
 	bool is_done() const { return (m_winning_stat != WinningStatus::NONE); } //ゲーム終了か
 	uint16_t get_turn() const { return m_turn; }
+	bool is_first() const { return m_is_first; }
 	WinningStatus get_winning_stat() const { return m_winning_stat; }
 	std::vector<int> legal_actions() const;
 	void advance(int in_action); //1ターン進め,次のプレイヤー視点の盤面にする
 	double get_first_player_score_for_win_rate() const;
 	std::string to_string() const;
+	bool get_my_board(Vec2i p) const { return m_my_board[p.m_y][p.m_x]; }
+	bool get_emy_board(Vec2i p) const { return m_emy_board[p.m_y][p.m_x]; }
 
 private:
 	bool m_is_first = true; //先手番の場合true
