@@ -4,7 +4,7 @@
 class ModeGame {
 public:
 	ModeGame();
-	void update();
+	void update(bool is_advance, bool is_step);
 	void draw() const;
 	bool is_finished() const { return m_state.is_done(); }
 

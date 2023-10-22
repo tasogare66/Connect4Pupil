@@ -116,7 +116,7 @@ namespace montecarlo {
 		auto time_keeper = TimeKeeper(time_threshold);
 		for (int cnt = 0;; cnt++)
 		{
-			if (time_keeper.is_time_over())
+			if (time_keeper.is_time_over() && cnt >= 20) //20回保証
 			{
 				break;
 			}

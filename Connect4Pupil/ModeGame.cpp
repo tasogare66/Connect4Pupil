@@ -9,8 +9,9 @@ ModeGame::ModeGame()
 	m_tokens_tex[1] = Texture{ U"🟡"_emoji };
 }
 
-void ModeGame::update()
+void ModeGame::update(bool is_advance, bool is_step)
 {
+	if (!is_advance) return;
 	if (!m_state.is_done()) {
 		auto ais = std::array<StringAIPair, 2>{
 			StringAIPair("mctsActionWithTimeThreshold 1ms", [](const C4State& state) { return ai::montecarlo::mcts_action(state, 1); }),
@@ -25,6 +26,7 @@ void ModeGame::update()
 			if (m_state.is_done()) break;
 			m_state.advance(second_ai.second(m_state));
 			if (m_state.is_done()) break;
+			if (is_step) return;
 		}
 	} else {
 		m_state = C4State();

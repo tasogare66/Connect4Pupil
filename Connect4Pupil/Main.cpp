@@ -20,7 +20,7 @@ void Main()
 	ModeGame mode_game;
 
 	while (System::Update()) {
-		mode_game.update();
+		mode_game.update(KeyZ.down(), true);
 		mode_game.draw();
 	}
 #else
